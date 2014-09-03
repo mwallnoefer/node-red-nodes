@@ -75,7 +75,9 @@ module.exports = function(RED) {
                 res.on("data", function (chunk) {
                     var msg = {};
                     msg.req = node.req;
-                    msg.payload = JSON.parse(chunk);
+                    try {
+                        msg.payload = JSON.parse(chunk);
+                    } catch (e) { node.log(e+"\n"+msg.payload); }
 
                     // send out the message to the rest of the workspace.
                     node.send(msg);
