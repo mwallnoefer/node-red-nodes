@@ -69,11 +69,19 @@
    <!-- node in the palette.                                                 -->
     <p>InTeGreen input node. Use this node to gather ITS (Intelligent Traffic
     System) data. More informations <a href="http://www.integreen-life.bz.it/">here</a>.</p>
+    <p>The <em>Host</em>, <em>Port</em> and <em>Frontend</em> parameters specify
+    the location of the REST-based webservice. Possible frontends (data providers)
+    include "MeteoFrontEnd" or "parkingFrontEnd". The <em>Call</em> and
+    <em>Call params</em> parameters determine the correct invocation, for
+    instance "get-records" and "station=83200MS&name=LF&seconds=10000" on the
+    "MeteoFrontEnd". Please consult the webservice documentation
+    http://host:port/frontend, eg.
+    <a href="http://ipchannels.integreen-life.bz.it/parkingFrontEnd/">here</a>.
     <p>The <em>Frontend</em>, <em>Call</em> and <em>Call params</em> parameters
     can also be assigned dynamically by leaving them empty in the configuration
     form and providing apposite <em>frontend</em>, <em>call</em> and/or
     <em>params</em> parameters on <em>msg</em>. <em>msg.params</em> can
-    either be a URI-encoded HTTP string (<it>param=value&...</it>) or a plain
+    either be a URI-encoded HTTP string ("param=value&...") or a plain
     object without encoding ({"param": "value", ...}).
 </script>
 
