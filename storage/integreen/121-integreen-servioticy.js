@@ -106,6 +106,13 @@ module.exports = function(RED) {
                 });
             });
 
+            post_req.on("error", function(e) {
+                //node.error(e);
+                msg.rc = 503;
+                msg.payload = e;
+                node.send(msg);
+            });
+
             // post the data
             post_req.write("");
             post_req.end();
