@@ -72,11 +72,15 @@ module.exports = function(RED) {
             var post_req = http.request(post_options, function(res) {
                 res.setEncoding("utf8");
 
+                var buffer = "";
                 res.on("data", function (chunk) {
+                    buffer += chunk;
+                });
+                res.on("end", function () {
                     var msg = {};
                     msg.req = node.req;
                     try {
-                        msg.payload = JSON.parse(chunk);
+                        msg.payload = JSON.parse(buffer);
                         if ("exceptionMessage" in msg.payload) {
                             node.log(msg.payload.exceptionMessage);
                         }
