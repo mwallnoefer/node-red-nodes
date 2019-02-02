@@ -47,19 +47,19 @@ module.exports = function(RED) {
 
         this.on("input", function(msg) {
             // inherit InTeGreen options from messages
-            if (this.frontend == "" && typeof(msg.frontend) == "string") {
+            if (this.frontend === "" && typeof(msg.frontend) === "string") {
                 this.frontend = msg.frontend;
             }
-            if (this.station == "" && typeof(msg.station) == "string") {
+            if (this.station === "" && typeof(msg.station) === "string") {
                 this.station = msg.station;
             }
-            if (this.datatype == "" && typeof(msg.datatype) == "string") {
+            if (this.datatype === "" && typeof(msg.datatype) === "string") {
                 this.datatype = msg.datatype;
             }
-            if (this.seconds == "") {
-                if (typeof(msg.seconds) == "number") {
+            if (this.seconds === "") {
+                if (typeof(msg.seconds) === "number") {
                     this.seconds = new String(msg.seconds);
-                } else if (typeof(msg.seconds) == "string") {
+                } else if (typeof(msg.seconds) === "string") {
                     this.seconds = msg.seconds;
                 }
             }
@@ -91,7 +91,7 @@ module.exports = function(RED) {
                         results = JSON.parse(buffer);
                         if ("exceptionMessage" in results) {
                             node.log(results.exceptionMessage);
-                        } else if (results.length == 0) {
+                        } else if (results.length === 0) {
                             node.log("no records!");
                         } else {
                             // set up ServIoTicy params

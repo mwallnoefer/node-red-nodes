@@ -40,17 +40,17 @@ module.exports = function(RED) {
 
         this.on("input", function(msg) {
             // inherit InTeGreen options from messages
-            if (this.frontend == "" && typeof(msg.frontend) == "string") {
+            if (this.frontend === "" && typeof(msg.frontend) === "string") {
                 this.frontend = msg.frontend;
             }
-            if (this.call == "" && typeof(msg.call) == "string") {
+            if (this.call === "" && typeof(msg.call) === "string") {
                 this.call = msg.call;
             }
-            if (this.params == "" && typeof(msg.params) == "string") {
+            if (this.params === "" && typeof(msg.params) === "string") {
                 this.params = msg.params;
             }
             // also support parameters map
-            if (this.params == "" && typeof(msg.params) == "object") {
+            if (this.params === "" && typeof(msg.params) === "object") {
                 for (var param in msg.params) {
                     this.params += encodeURIComponent(param) + "=" + encodeURIComponent(msg.params[param]) + "&";
                 }
@@ -58,7 +58,7 @@ module.exports = function(RED) {
 
             // compute request
             this.req = "/"+this.frontend+"/rest/"+this.call;
-            if (this.params != "") {
+            if (this.params !== "") {
                 this.req += "?"+this.params;
             }
 
